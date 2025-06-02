@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: loans
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://host.docker.internal:5432/bank
+    username: postgres
+    password: Net#ork2025
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  config:
+    import: configserver:http://localhost:8071/
+
+server:
+  port: 8090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8070/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+    com.netflix.discovery: DEBUG
+
+info:
+  app:
+    name: "loans"
+    description: "Eazy Bank Loans Application"
+    version: "1.0.0"
+
+management:
+  info:
+    env:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      access: unrestricted

@@ -1,12 +1,8 @@
 package com.jsiders.loan.dto;
 
-import com.jsiders.loan.annotation.EnumValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Min;
 import lombok.Data;
-import org.springframework.data.domain.Sort;
-
-import javax.swing.*;
 
 /**
  * Created by Sid Gaikwad on 29-05-2025.
